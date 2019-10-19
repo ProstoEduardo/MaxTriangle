@@ -1,0 +1,36 @@
+group 'cft-task'
+version '1.0-SNAPSHOT'
+
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+
+    doFirst {
+        from {
+            configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        }
+    }
+}
+
+test {
+    dependsOn 'cleanTest'
+    useJUnit() {}
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
