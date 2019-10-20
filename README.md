@@ -11,4 +11,4 @@ Run cd src/main/java/
 #
 Run javac Main.java Point.java Triangle.java 
 #
-java Main <filename> <filename>
+java Main input.txt output.txt
